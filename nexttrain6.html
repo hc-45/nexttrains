@@ -59,11 +59,8 @@ const osakaschedmatrix = [
     ]
 
   function convertTrainType(type){ 
-    if (type == "SlE") return("E")  // Semi-Limited Express
-    if (type == "lE") return("E")   // Limited Express
-    if (type == "RS") return("E")   // Rapid Express
-    if (type == "E") return("E")   // Express
-    return("L")    // Local
+    if (type == "SlE" || type == "lE" || type == "RS" || type == "E") return "E"  // Semi-Limited Express // Limited Express // Rapid Express // Express  
+    return "L"    // Local
   }
 
   function findNextTrainFromHour(hr,min, smatrix){
@@ -122,10 +119,10 @@ const osakaschedmatrix = [
     osakastr = getTrain(hours,minutes,osakaschedmatrix)
     document.getElementById("nexttrain").innerHTML = "Kobe "+kobestr+"<br>Osaka "+osakastr
   
-    setTimeout(scheduleCheck, 1000*60)
 
   }
-    scheduleCheck();
+    
+    setInterval(scheduleCheck, 1000*60);
     </script>
   </body>
 
